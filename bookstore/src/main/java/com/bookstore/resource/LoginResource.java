@@ -3,10 +3,7 @@ package com.bookstore.resource;
 import com.bookstore.domain.User;
 import com.bookstore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;
 import java.util.Date;
@@ -20,8 +17,19 @@ public class LoginResource {
     @Autowired
     private UserService userService;
 
+    @RequestMapping("/login")
+    public String login(
+            @RequestParam(value="error", required = false) String error
+    ) {
+        if (error != null) {
+            return "login failed.";
+        }
+
+        return "login success";
+    }
+
     @RequestMapping(value="login", method = RequestMethod.POST)
-    public String login(@RequestBody Map<String, String> json) throws
+    public String loginPost(@RequestBody Map<String, String> json) throws
             ServletException {
         if(json.get("username") == null || json.get("password") ==null) {
             throw new ServletException("Please fill in username and password");

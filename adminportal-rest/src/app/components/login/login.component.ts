@@ -9,6 +9,7 @@ import {LoginService} from "../../services/login.service";
 export class LoginComponent implements OnInit {
 
   private credential = {'username':'', 'password':''};
+  private loggedIn = false;
 
   constructor (private loginService: LoginService){
   }
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.loginService.sendCredential(this.credential.username, this.credential.password).subscribe(
       res => {
+        this.loggedIn = true;
         console.log(res);
       },
       error => console.log(error)
