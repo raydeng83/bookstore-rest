@@ -4,20 +4,25 @@ import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class LoginService {
-  token: string;
 
   constructor (private http: Http) {}
 
-  sendCredential(credentials) {
-    let tokenUrl1 = "http://localhost:8181/login";
-    let headers1 = new Headers({'Content-Type': 'application/json'});
-    return this.http.post(tokenUrl1, JSON.stringify(credentials), {headers: headers1});
+  sendCredential(username: string, password: string) {
+    let url = "http://localhost:8181/login";
+    let params = 'username='+username+'&password='+password;
+    let headers = new Headers(
+      {
+        'Content-Type': 'application/x-www-form-urlencoded'
+        // 'Access-Control-Allow-Credentials' : true
+      });
+    return this.http.post(url, params, {headers: headers, withCredentials : true});
   }
 
   logout() {
-    localStorage.setItem("token","");
-    localStorage.setItem("currentUserName", '');
-    alert("You just logged out.");
+    let url = "http://localhost:8080/logout";
+    return this.http.get(url, { withCredentials: true });
   }
+
+
 
 }
