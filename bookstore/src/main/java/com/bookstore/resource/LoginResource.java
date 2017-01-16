@@ -3,6 +3,8 @@ package com.bookstore.resource;
 import com.bookstore.domain.User;
 import com.bookstore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;
@@ -18,14 +20,14 @@ public class LoginResource {
     private UserService userService;
 
     @RequestMapping("/login")
-    public String login(
+    public ResponseEntity login(
             @RequestParam(value="error", required = false) String error
     ) {
         if (error != null) {
-            return "login failed.";
+            return new ResponseEntity("Login failed.",HttpStatus.BAD_REQUEST);
         }
 
-        return "login success";
+        return new ResponseEntity("Login success.",HttpStatus.OK);
     }
 
     @RequestMapping(value="login", method = RequestMethod.POST)

@@ -20,7 +20,10 @@ export class LoginComponent implements OnInit {
         this.loggedIn = true;
         console.log(res);
       },
-      error => console.log(error)
+      error => {
+        this.loggedIn = false;
+        console.log(error);
+      }
     );
 
   }
