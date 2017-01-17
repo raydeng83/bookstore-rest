@@ -1,7 +1,11 @@
 package com.bookstore.resource;
 
+import com.bookstore.domain.Book;
+import com.bookstore.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +29,9 @@ import java.util.Iterator;
 public class BookResource {
     private String imageName;
 
+    @Autowired
+    private BookService bookService;
+
     @RequestMapping(value = "/add/image", method = RequestMethod.POST)
     public ResponseEntity upload(HttpServletResponse response, HttpServletRequest request) {
         try {
@@ -33,7 +40,6 @@ public class BookResource {
             MultipartFile multipartFile = multipartRequest.getFile(it.next());
             String fileName = multipartFile.getOriginalFilename();
             imageName = fileName;
-
 
             byte[] bytes = multipartFile.getBytes();
             BufferedOutputStream stream =
@@ -49,4 +55,12 @@ public class BookResource {
         }
 
     }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public Book addBookPost(@RequestBody Book book) {
+        return bookService.save(book);
+    }
+
+
+
 }

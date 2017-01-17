@@ -15,6 +15,4 @@ export class Book {
   public active: boolean;
   public description: string;
   public inStockNumber: number;
-  public
-
 }

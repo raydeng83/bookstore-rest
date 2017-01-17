@@ -2,21 +2,21 @@
   <div class="row">
     <div class="col s6 offset-s3">
     <h3 style="margin-top: 30px;" class="center-align">New Book Information <span style="font-size: small"> * is a required field</span>
-    </h3>
-    <form class="col s12">
+      </h3>
+    <form class="col s12" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="input-field col s12">
-          <input id="title" type="text" class="validate" required>
+          <input id="title" type="text" class="validate" required [(ngModel)]="newBook.title" name="title">
           <label for="title">* Title</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input id="author" type="text" class="validate" required>
+          <input id="author" type="text" class="validate" required [(ngModel)]="newBook.author" name="author">
           <label for="author">* Author</label>
         </div>
         <div class="input-field col s6">
-          <input id="publisher" type="text" class="validate">
+          <input id="publisher" type="text" class="validate" [(ngModel)]="newBook.publisher" name="publisher">
           <label for="publisher">Publisher</label>
         </div>
       </div>
@@ -24,7 +24,7 @@
       <div class="row">
         <div class="input-field col s12">
           <span class="grey-text">Publication Date
-          <input id="publicationDate" type="date" class="datepicker"></span>
+          <input id="publicationDate" type="date" class="datepicker" [(ngModel)]="newBook.publicationDate" name="publicationDate"></span>
         </div>
 
 
@@ -37,7 +37,7 @@
       <div class="row">
         <div class="input-field col s6">
           <span class="grey-text">* Category</span>
-          <select class="browser-default" id="category" name="category">
+          <select class="browser-default" id="category" name="category" [(ngModel)]="newBook.category">
             <option value="" disabled selected>Choose your option</option>
             <option value="Management">Management</option>
             <option value="Fiction">Fiction</option>
@@ -49,7 +49,7 @@
 
         <div class="input-field col s6">
         <span class="grey-text">Format</span>
-        <select class="browser-default" id="format" name="format">
+        <select class="browser-default" id="format" name="format" [(ngModel)]="newBook.format">
           <option value="paperback">Paperback</option>
           <option value="hardcover">Hardcover</option>
         </select>
@@ -58,7 +58,7 @@
 
       <div class="row">
         <div class="input-field col s6">
-          <input id="pageNumber" type="number" name="numberOfPages" class="validate" step="0.01">
+          <input id="pageNumber" type="number" name="numberOfPages" class="validate" step="0.01" [(ngModel)]="newBook.numberOfPages">
           <label for="pageNumber">Number of Pages</label>
         </div>
         <div class="input-field col s6">
@@ -70,7 +70,7 @@
       <div class="row">
         <div class="input-field col s4">
           <div class="input-field inline">
-            <input id="shippingWeight" type="number" name="shippingWeight" class="validate" step="0.01">
+            <input id="shippingWeight" type="number" name="shippingWeight" class="validate" step="0.01" [(ngModel)]="newBook.shippingWeight">
             <label for="shippingWeight">Shipping Weight</label>
           </div>
           ounces
@@ -78,14 +78,14 @@
         <div class="input-field col s4">
           $
           <div class="input-field inline">
-            <input id="listPrice" type="number" name="listPrice" class="validate" step="0.01">
+            <input id="listPrice" type="number" name="listPrice" class="validate" step="0.01" [(ngModel)]="newBook.listPrice">
             <label for="listPrice">List Price</label>
           </div>
         </div>
         <div class="input-field col s4">
           $
           <div class="input-field inline">
-            <input id="ourPrice" type="number" name="ourPrice" class="validate" step="0.01">
+            <input id="ourPrice" type="number" name="ourPrice" class="validate" step="0.01" [(ngModel)]="newBook.ourPrice">
             <label for="ourPrice">Our Price</label>
           </div>
         </div>
@@ -93,7 +93,7 @@
 
       <div class="row">
         <div class="input-field col s6">
-          <input id="inStockNumber" type="number" name="inStockNumber" class="validate" step="0.01">
+          <input id="inStockNumber" type="number" name="inStockNumber" class="validate" step="0.01" [(ngModel)]="newBook.inStockNumber">
           <label for="inStockNumber">Number In Stock</label>
         </div>
         <div class="input-field col s6">
@@ -101,7 +101,7 @@
           <div class="switch" id="active">
             <label>
               Inactive
-              <input type="checkbox" checked>
+              <input type="checkbox" checked [(ngModel)]="newBook.active" name="active">
               <span class="lever"></span>
               Active
             </label>
@@ -114,7 +114,7 @@
         <form class="col s12">
           <div class="row">
             <div class="input-field col s12">
-              <textarea id="description" class="materialize-textarea"></textarea>
+              <textarea id="description" class="materialize-textarea" [(ngModel)]="newBook.description" name="description"></textarea>
               <label for="description">Description</label>
             </div>
           </div>
@@ -141,7 +141,7 @@
 
       <div class="row">
         <div class="col s12">
-          <a class="waves-effect waves-light btn blue darken-2 text-white">Add Book</a>
+          <button type="submit" class="waves-effect waves-light btn blue darken-2 text-white">Add Book</button>
           <a class="waves-effect waves-light btn red darken-2 text-white">Cancel</a>
         </div>
       </div>

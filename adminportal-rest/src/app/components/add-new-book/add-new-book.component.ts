@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UploadImageService} from "../../services/upload-image.service";
+import {AddBookService} from "../../services/add-book.service";
+import {Book} from "../../models/book";
 
 @Component({
   selector: 'app-add-new-book',
@@ -8,26 +10,21 @@ import {UploadImageService} from "../../services/upload-image.service";
 })
 export class AddNewBookComponent implements OnInit {
 
-  constructor (private uploadImageService:UploadImageService) {}
+  private newBook: Book = new Book();
+  private bookAdded: boolean;
 
-  // onSubmit() {
-  //   this.userService.getUserByName(localStorage.getItem("currentUserName")).subscribe(
-  //     user => {
-  //       this.user = JSON.parse(JSON.parse(JSON.stringify(user))._body);
-  //       console.log(this.user);
-  //       this.newPhoto.user = this.user;
-  //       this.addPhotoService.sendPhoto(this.newPhoto)
-  //         .subscribe(
-  //           data => {
-  //             this.photoAdded = true;
-  //             this.newPhoto = new Photo();
-  //           },
-  //           error => console.log(error)
-  //         );
-  //     },
-  //     error => console.log(error)
-  //   )
-  // }
+  constructor (private uploadImageService:UploadImageService, private addBookService:AddBookService) {}
+
+  onSubmit() {
+    this.addBookService.sendBook(this.newBook)
+      .subscribe(
+        data => {
+          this.bookAdded = true;
+          this.newBook = new Book();
+        },
+        error => console.log(error)
+      );
+  }
 
   ngOnInit() {
   }
