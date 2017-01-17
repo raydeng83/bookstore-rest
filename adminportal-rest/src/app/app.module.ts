@@ -10,6 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 
 import {LoginService} from './services/login.service';
 import { AddNewBookComponent } from './components/add-new-book/add-new-book.component';
+import {UploadImageService} from "./services/upload-image.service";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AddNewBookComponent } from './components/add-new-book/add-new-book.comp
     routing
   ],
   providers: [
-    LoginService
+    LoginService,
+    UploadImageService
   ],
   bootstrap: [AppComponent]
 })
