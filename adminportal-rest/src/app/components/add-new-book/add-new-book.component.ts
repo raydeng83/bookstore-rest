@@ -21,12 +21,20 @@ export class AddNewBookComponent implements OnInit {
         data => {
           this.bookAdded = true;
           this.newBook = new Book();
+          this.newBook.active=true;
+          this.newBook.category="Management";
+          this.newBook.language="english";
+          this.newBook.format="paperback";
         },
         error => console.log(error)
       );
   }
 
   ngOnInit() {
+    this.newBook.active=true;
+    this.newBook.category="Management";
+    this.newBook.language="english";
+    this.newBook.format="paperback";
   }
 
 }

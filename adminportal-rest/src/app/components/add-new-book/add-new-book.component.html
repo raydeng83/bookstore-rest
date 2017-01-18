@@ -38,7 +38,6 @@
         <div class="input-field col s6">
           <span class="grey-text">* Category</span>
           <select class="browser-default" id="category" name="category" [(ngModel)]="newBook.category">
-            <option value="" disabled selected>Choose your option</option>
             <option value="Management">Management</option>
             <option value="Fiction">Fiction</option>
             <option value="Engineering">Engineering</option>
@@ -62,19 +61,13 @@
           <label for="pageNumber">Number of Pages</label>
         </div>
         <div class="input-field col s6">
-          <input id="isbn" type="text" class="validate">
+          <input id="isbn" type="text" class="validate" [(ngModel)]="newBook.isbn" name="isbn">
           <label for="isbn">* ISBN</label>
         </div>
       </div>
 
       <div class="row">
-        <div class="input-field col s4">
-          <div class="input-field inline">
-            <input id="shippingWeight" type="number" name="shippingWeight" class="validate" step="0.01" [(ngModel)]="newBook.shippingWeight">
-            <label for="shippingWeight">Shipping Weight</label>
-          </div>
-          ounces
-        </div>
+
         <div class="input-field col s4">
           $
           <div class="input-field inline">
@@ -93,15 +86,34 @@
 
       <div class="row">
         <div class="input-field col s6">
+          <div class="input-field inline">
+            <input id="shippingWeight" type="number" name="shippingWeight" class="validate" step="0.01" [(ngModel)]="newBook.shippingWeight">
+            <label for="shippingWeight">Shipping Weight</label>
+          </div>
+          ounces
+        </div>
+
+        <div class="input-field col s6">
+          <span class="grey-text">Language</span>
+          <select class="browser-default" id="language" name="language" [(ngModel)]="newBook.language">
+            <option value="english">English</option>
+            <option value="spanish">Spanish</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s6">
           <input id="inStockNumber" type="number" name="inStockNumber" class="validate" step="0.01" [(ngModel)]="newBook.inStockNumber">
           <label for="inStockNumber">Number In Stock</label>
         </div>
+
         <div class="input-field col s6">
           <!-- Switch -->
           <div class="switch" id="active">
             <label>
               Inactive
-              <input type="checkbox" checked [(ngModel)]="newBook.active" name="active">
+              <input type="checkbox" [(ngModel)]="newBook.active" name="active">
               <span class="lever"></span>
               Active
             </label>

@@ -5,3 +5,7 @@
   display:inline;
   white-space: nowrap;
 }
+
+.box {
+  border: 1px solid red;
+}
