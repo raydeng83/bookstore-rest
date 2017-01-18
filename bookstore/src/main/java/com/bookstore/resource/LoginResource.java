@@ -30,6 +30,13 @@ public class LoginResource {
         return new ResponseEntity("Login success.",HttpStatus.OK);
     }
 
+    @RequestMapping("/")
+    public ResponseEntity logout(
+            @RequestParam("logout") String logout
+    ){
+        return new ResponseEntity("Logout success.",HttpStatus.OK);
+    }
+
     @RequestMapping(value="login", method = RequestMethod.POST)
     public String loginPost(@RequestBody Map<String, String> json) throws
             ServletException {

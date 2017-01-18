@@ -19,10 +19,8 @@ export class LoginService {
   }
 
   logout() {
-    let url = "http://localhost:8080/logout";
+    let url = "http://localhost:8181/logout";
     return this.http.get(url, { withCredentials: true });
   }
-
-
 
 }
