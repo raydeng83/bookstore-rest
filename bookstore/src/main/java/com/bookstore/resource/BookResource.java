@@ -5,10 +5,7 @@ import com.bookstore.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -33,12 +30,16 @@ public class BookResource {
     private BookService bookService;
 
     @RequestMapping(value = "/add/image", method = RequestMethod.POST)
-    public ResponseEntity upload(HttpServletResponse response, HttpServletRequest request) {
+    public ResponseEntity upload(
+            @RequestParam("id") Long id,
+            HttpServletResponse response, HttpServletRequest request
+    ) {
         try {
+            Book book = bookService.findOne(id);
             MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
             Iterator<String> it = multipartRequest.getFileNames();
             MultipartFile multipartFile = multipartRequest.getFile(it.next());
-            String fileName = multipartFile.getOriginalFilename();
+            String fileName = id+".png";
             imageName = fileName;
 
             byte[] bytes = multipartFile.getBytes();

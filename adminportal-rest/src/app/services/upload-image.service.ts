@@ -9,8 +9,8 @@ export class UploadImageService {
     this.filesToUpload = [];
   }
 
-  upload() {
-    this.makeFileRequest("http://localhost:8181/book/add/image", [], this.filesToUpload).then((result) => {
+  upload(bookId: number) {
+    this.makeFileRequest("http://localhost:8181/book/add/image?id="+bookId, [], this.filesToUpload).then((result) => {
       console.log(result);
     }, (error) => {
       console.error(error);
@@ -31,7 +31,7 @@ export class UploadImageService {
       xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
           if (xhr.status == 200) {
-            alert("Upload successful!");
+            console.log("image upload successful!");
           } else {
             reject(xhr.response);
           }
@@ -39,6 +39,7 @@ export class UploadImageService {
       }
       xhr.open("POST", url, true);
       // xhr.setRequestHeader("Authorization", "Bearer "+localStorage.getItem("token"));
+      // xhr.withCredentials = true;
       xhr.send(formData);
     });
   }

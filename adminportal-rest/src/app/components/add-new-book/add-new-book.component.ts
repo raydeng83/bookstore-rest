@@ -19,6 +19,7 @@ export class AddNewBookComponent implements OnInit {
     this.addBookService.sendBook(this.newBook)
       .subscribe(
         data => {
+          this.uploadImageService.upload(JSON.parse(JSON.parse(JSON.stringify(data))._body).id);
           this.bookAdded = true;
           this.newBook = new Book();
           this.newBook.active=true;
@@ -31,6 +32,7 @@ export class AddNewBookComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.bookAdded=false;
     this.newBook.active=true;
     this.newBook.category="Management";
     this.newBook.language="english";
