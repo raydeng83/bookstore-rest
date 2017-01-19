@@ -3,6 +3,7 @@ package com.bookstore.domain.security;
 import com.bookstore.domain.User;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -10,9 +11,10 @@ import java.util.Date;
  * Created by z00382545 on 12/20/16.
  */
 @Entity
-public class PasswordResetToken {
+public class PasswordResetToken implements Serializable {
 
     private static final int EXPIRATION = 60 * 24;
+    private static final long serialVersionUID = -6383089648343671723L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

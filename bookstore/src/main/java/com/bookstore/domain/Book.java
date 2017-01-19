@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +13,9 @@ import java.util.List;
  */
 
 @Entity
-public class Book {
+public class Book implements Serializable{
+
+    private static final long serialVersionUID = -1285561867596014659L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO )

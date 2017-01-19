@@ -3,6 +3,7 @@ package com.bookstore.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -13,8 +14,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "user_order")
-public class Order {
+public class Order implements Serializable {
 
+
+    private static final long serialVersionUID = 6272750051514353252L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

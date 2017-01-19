@@ -1,14 +1,16 @@
 package com.bookstore.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by z00382545 on 12/31/16.
  */
 
 @Entity
-public class UserShipping {
+public class UserShipping implements Serializable {
 
+    private static final long serialVersionUID = 8677843208804579382L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

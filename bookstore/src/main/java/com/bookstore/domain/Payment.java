@@ -1,13 +1,17 @@
 package com.bookstore.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by z00382545 on 12/28/16.
  */
 
 @Entity
-public class Payment {
+public class Payment implements Serializable {
+
+
+    private static final long serialVersionUID = 6899177322585203736L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

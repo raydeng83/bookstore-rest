@@ -7,6 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -16,8 +17,10 @@ import java.util.Set;
  * Created by z00382545 on 12/20/16.
  */
 @Entity
-public class User implements UserDetails {
+public class User implements UserDetails, Serializable{
 
+
+    private static final long serialVersionUID = 7433782724080958118L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id", nullable = false, updatable = false)

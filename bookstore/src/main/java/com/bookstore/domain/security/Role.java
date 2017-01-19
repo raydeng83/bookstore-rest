@@ -1,6 +1,7 @@
 package com.bookstore.domain.security;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,7 +10,10 @@ import java.util.Set;
  */
 
 @Entity
-public class Role {
+public class Role implements Serializable {
+
+
+    private static final long serialVersionUID = 8206853130731332053L;
     @Id
 //    @GeneratedValue(strategy = GenerationType.AUTO)
     private int roleId;

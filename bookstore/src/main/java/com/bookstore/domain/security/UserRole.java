@@ -4,6 +4,7 @@ package com.bookstore.domain.security;
 import com.bookstore.domain.User;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by z00382545 on 10/20/16.
@@ -11,7 +12,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="user_role")
-public class UserRole {
+public class UserRole implements Serializable {
+
+
+    private static final long serialVersionUID = -2832439732022278706L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long userRoleId;

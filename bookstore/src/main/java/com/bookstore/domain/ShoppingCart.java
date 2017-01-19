@@ -1,8 +1,10 @@
 package com.bookstore.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import javassist.SerialVersionUID;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -10,8 +12,10 @@ import java.util.List;
  * Created by z00382545 on 12/28/16.
  */
 @Entity
-public class ShoppingCart {
+public class ShoppingCart implements Serializable {
 
+
+    private static final long serialVersionUID = -6792254538997397079L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

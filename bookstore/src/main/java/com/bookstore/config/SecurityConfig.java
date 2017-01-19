@@ -41,43 +41,43 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //            "/book/**"
     };
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests().
-//                antMatchers("/**").
-                antMatchers(PUBLIC_MATCHERS).
-                permitAll().anyRequest().authenticated();
-
-        http
-                .csrf().disable().cors().disable()
-                .formLogin().failureUrl("/login?error")
-                .defaultSuccessUrl("/login")
-//                .loginPage("/login")
-                .permitAll();
-//                .and()
-//                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/?logout").deleteCookies("remember-me").permitAll()
-//                .and()
-//                .rememberMe();
-    }
-
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {
 //        http
-//                .authorizeRequests()
-//                .anyRequest().authenticated()
+//                .authorizeRequests().
+////                antMatchers("/**").
+//                antMatchers(PUBLIC_MATCHERS).
+//                permitAll().anyRequest().authenticated();
+//
+//        http
+//                .csrf().disable().cors().disable()
+//                .formLogin().failureUrl("/login?error")
+//                .defaultSuccessUrl("/login")
+////                .loginPage("/login")
+//                .permitAll()
+//                .and()
+//                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/?logout").deleteCookies("remember-me").permitAll()
+//                .and()
+////                .rememberMe();
+//    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .anyRequest().authenticated()
 //                .and()
 //                .requestCache()
 //                .requestCache(new NullRequestCache())
-//                .and()
-//                .httpBasic();
-//    }
+                .and()
+                .httpBasic();
+    }
 
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-    	 auth.inMemoryAuthentication().withUser("user").password("password").roles("USER"); //This is in-memory authentication
-//        auth.userDetailsService(userSecurityService).passwordEncoder(passwordEncoder());
+//    	 auth.inMemoryAuthentication().withUser("user").password("password").roles("USER"); //This is in-memory authentication
+        auth.userDetailsService(userSecurityService).passwordEncoder(passwordEncoder());
     }
 
     @Bean
