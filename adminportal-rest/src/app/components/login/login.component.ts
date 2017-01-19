@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from "../../services/login.service";
+import {CookieService} from "angular2-cookie/services/cookies.service";
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
   private credential = {'username':'', 'password':''};
   private loggedIn = false;
 
-  constructor (private loginService: LoginService){
+  constructor (private loginService: LoginService, private cookieService: CookieService){
   }
 
   onSubmit() {
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
       res => {
         this.loggedIn = true;
         console.log(res);
+        console.log("cookies: "+this.cookieService.get("JSESSIONID"));
       },
       error => {
         this.loggedIn = false;

@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { LoginComponent } from './components/login/login.component';
 
+import { CookieService } from 'angular2-cookie/services/cookies.service';
 import {LoginService} from './services/login.service';
 import { AddNewBookComponent } from './components/add-new-book/add-new-book.component';
 import {UploadImageService} from "./services/upload-image.service";
@@ -27,6 +28,7 @@ import {AddBookService} from "./services/add-book.service";
     routing
   ],
   providers: [
+    CookieService,
     LoginService,
     UploadImageService,
     AddBookService
