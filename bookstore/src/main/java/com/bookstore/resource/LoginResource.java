@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpSession;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Map;
 
@@ -19,16 +21,16 @@ public class LoginResource {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/login")
-    public ResponseEntity login(
-            @RequestParam(value="error", required = false) String error
-    ) {
-        if (error != null) {
-            return new ResponseEntity("Login failed.",HttpStatus.BAD_REQUEST);
-        }
-
-        return new ResponseEntity("Login success.",HttpStatus.OK);
-    }
+//    @RequestMapping("/login")
+//    public ResponseEntity login(
+//            @RequestParam(value="error", required = false) String error
+//    ) {
+//        if (error != null) {
+//            return new ResponseEntity("Login failed.",HttpStatus.BAD_REQUEST);
+//        }
+//
+//        return new ResponseEntity("Login success.",HttpStatus.OK);
+//    }
 
     @RequestMapping("/")
     public ResponseEntity logout(
@@ -70,5 +72,16 @@ public class LoginResource {
     @RequestMapping("/test")
     public String test() {
         return "test";
+    }
+
+    @RequestMapping("/checkSession")
+    public String checkSession() {
+        return "Session Active";
+    }
+
+    @RequestMapping("/token")
+    @ResponseBody
+    public Map<String,String> token(HttpSession session) {
+        return Collections.singletonMap("token", session.getId());
     }
 }

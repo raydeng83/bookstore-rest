@@ -12,25 +12,31 @@ export class LoginComponent implements OnInit {
   private credential = {'username':'', 'password':''};
   private loggedIn = false;
 
-  constructor (private loginService: LoginService, private cookieService: CookieService){
+  constructor (private loginService: LoginService){
   }
 
   onSubmit() {
     this.loginService.sendCredential(this.credential.username, this.credential.password).subscribe(
-      res => {
-        this.loggedIn = true;
+      res=>{
         console.log(res);
-        console.log("cookies: "+this.cookieService.get("JSESSIONID"));
+        localStorage.setItem("xAuthToken", res.json().token);
+        this.loggedIn=true;
       },
-      error => {
-        this.loggedIn = false;
-        console.log(error);
+      error=>{
+        this.loggedIn=false;
       }
     );
-
   }
 
   ngOnInit() {
+    this.loginService.checkSession().subscribe(
+      res => {
+        this.loggedIn=true;
+      },
+      error => {
+        this.loggedIn=false;
+      }
+    );
   }
 
 }

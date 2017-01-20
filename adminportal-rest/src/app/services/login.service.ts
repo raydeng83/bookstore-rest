@@ -8,19 +8,30 @@ export class LoginService {
   constructor (private http: Http) {}
 
   sendCredential(username: string, password: string) {
-    let url = "http://localhost:8181/login";
-    let params = 'username='+username+'&password='+password;
+    let url = "http://localhost:8181/token";
+    let encodedCredentials = btoa(username+":"+password);
+    let basicHeader = "Basic "+ encodedCredentials;
     let headers = new Headers(
       {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization' : basicHeader
+
         // 'Access-Control-Allow-Credentials' : true
       });
-    return this.http.post(url, params, {headers: headers, withCredentials : true});
+    return this.http.get(url, {headers: headers});
+  }
+
+  checkSession() {
+    let url = "http://localhost:8181/checkSession";
+    let tokenHeader = new Headers ({
+      'x-auth-token' : localStorage.getItem("xAuthToken")
+    });
+    return this.http.get(url, {headers : tokenHeader});
   }
 
   logout() {
     let url = "http://localhost:8181/logout";
-    return this.http.get(url, { withCredentials: true });
+    return this.http.get(url, {withCredentials:true});
   }
 
 }

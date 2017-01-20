@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.savedrequest.NullRequestCache;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.session.web.http.HeaderHttpSessionStrategy;
 import org.springframework.session.web.http.HttpSessionStrategy;
 
@@ -37,41 +38,52 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String[] PUBLIC_MATCHERS = {
             "/css/**",
             "/js/**",
-            "/image/**"
+            "/image/**",
 //            "/book/**"
     };
 
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
 //        http
-//                .authorizeRequests().
-////                antMatchers("/**").
-//                antMatchers(PUBLIC_MATCHERS).
-//                permitAll().anyRequest().authenticated();
-//
-//        http
+//                .authorizeRequests()
+////                .antMatchers("/**")
+//                .antMatchers(PUBLIC_MATCHERS)
+//                .permitAll()
+//                .anyRequest().authenticated()
+//                .and()
 //                .csrf().disable().cors().disable()
-//                .formLogin().failureUrl("/login?error")
-//                .defaultSuccessUrl("/login")
+//                .formLogin()
+////                .failureUrl("/login?error")
+////                .defaultSuccessUrl("/test")
 ////                .loginPage("/login")
 //                .permitAll()
 //                .and()
 //                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/?logout").deleteCookies("remember-me").permitAll()
 //                .and()
-////                .rememberMe();
-//    }
+//                .rememberMe();
+//
+//
+//
+        http.csrf().disable().cors().disable().httpBasic().and().authorizeRequests()
+                .antMatchers(PUBLIC_MATCHERS).permitAll().anyRequest().authenticated()
+                .and().logout().permitAll();
+    }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                .anyRequest().authenticated()
+
+
+
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http
+//                .csrf().disable()
+//                .authorizeRequests()
+//                .anyRequest().authenticated()
 //                .and()
 //                .requestCache()
 //                .requestCache(new NullRequestCache())
-                .and()
-                .httpBasic();
-    }
+//                .and()
+//                .httpBasic();
+//    }
 
 
     @Autowired
