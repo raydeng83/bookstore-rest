@@ -8,10 +8,19 @@ import {Router} from "@angular/router";
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
+  private loggedIn = false;
 
   constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit() {
+    this.loginService.checkSession().subscribe(
+      res => {
+        this.loggedIn=true;
+      },
+      error => {
+        this.loggedIn=false;
+      }
+    );
   }
 
   logout(){
