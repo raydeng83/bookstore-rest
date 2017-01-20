@@ -19,7 +19,7 @@
           <input hidden="hidden" name="id"  />
           <input class="checkboxBook" type="checkbox"/>
         </td>
-        <td><a>{{book.title}}</a></td>
+        <td><a (click)="onSelect(book)" style="cursor: pointer">{{book.title}}</a></td>
         <td>{{book.author}}</td>
         <td>{{book.category}}</td>
         <td>{{book.listPrice}}</td>

@@ -1,0 +1,39 @@
+<div class="container">
+  <div>
+    <ol class="breadcrumb">
+      <li><a><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Go back</a></li>
+      <li><a>Edit</a></li>
+    </ol>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <img src="#" class="img-responsive"/>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-9">
+      <h3>{{book.title}}</h3>
+      <div class="row">
+        <div class="col-xs-6">
+          <p><strong>Author: </strong>{{book.author}}</p>
+          <p><strong>Publisher: </strong>{{book.publisher}}</p>
+          <p><strong>Publication Date: </strong>{{book.publicationDate}}</p>
+          <p><strong>Language: </strong>{{book.language}}</p>
+          <p><strong>Category: </strong>{{book.category}}</p>
+          <p><strong>Pages: </strong>{{book.numberOfPages}}</p>
+        </div>
+        <div class="col-xs-6">
+          <p><strong>Format: </strong>{{book.format}}</p>
+          <p><strong>ISBN: </strong>{{book.isbn}}</p>
+          <p><strong>Shipping Weight: </strong>{{book.shippingWeight}}</p>
+          <p><strong>List Price: </strong>{{book.listPrice}}</p>
+          <p><strong>Our Price: </strong>{{book.ourPrice}}</p>
+          <p><strong>Number in Stock: </strong>{{book.inStockNumber}}</p>
+        </div>
+      </div>
+      <p><strong>Description: </strong>{{book.description}}</p>
+    </div>
+  </div>
+</div>
