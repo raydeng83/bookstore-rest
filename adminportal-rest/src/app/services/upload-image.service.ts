@@ -39,7 +39,7 @@ export class UploadImageService {
       }
       xhr.open("POST", url, true);
       // xhr.setRequestHeader("Authorization", "Bearer "+localStorage.getItem("token"));
-      xhr.withCredentials = true;
+      xhr.setRequestHeader("x-auth-token", localStorage.getItem("xAuthToken") );
       xhr.send(formData);
     });
   }
