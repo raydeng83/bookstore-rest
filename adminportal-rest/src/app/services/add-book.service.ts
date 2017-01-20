@@ -9,8 +9,11 @@ export class AddBookService {
 
   sendBook(book:Book) {
     let url = "http://localhost:8181/book/add";
-    let headers1 = new Headers({'Content-Type': 'application/json'});
-    return this.http.post(url, JSON.stringify(book), {headers: headers1, withCredentials : true});
+    let headers1 = new Headers({
+      'Content-Type': 'application/json',
+      'x-auth-token' : localStorage.getItem("xAuthToken")
+    });
+    return this.http.post(url, JSON.stringify(book), {headers: headers1});
   }
 
 }

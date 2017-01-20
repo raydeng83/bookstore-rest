@@ -30,8 +30,11 @@ export class LoginService {
   }
 
   logout() {
-    let url = "http://localhost:8181/logout";
-    return this.http.get(url, {withCredentials:true});
+    let url = "http://localhost:8181/user/logout";
+    let tokenHeader = new Headers ({
+      'x-auth-token' : localStorage.getItem("xAuthToken")
+    });
+    return this.http.get(url, {headers : tokenHeader});
   }
 
 }
