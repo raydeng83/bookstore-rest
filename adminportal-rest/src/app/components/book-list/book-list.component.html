@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="table-responsive" style="margin-top: 30px;">
+    <table id="bookListTable" class="table bordered highlight striped">
+      <thead>
+      <tr>
+        <th><input type="checkbox"/></th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Category</th>
+        <th>List Price</th>
+        <th>Our Price</th>
+        <th>Active?</th>
+        <th>Operation</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let book of bookList">
+        <td>
+          <input hidden="hidden" name="id"  />
+          <input class="checkboxBook" type="checkbox"/>
+        </td>
+        <td><a>{{book.title}}</a></td>
+        <td>{{book.author}}</td>
+        <td>{{book.category}}</td>
+        <td>{{book.listPrice}}</td>
+        <td>{{book.ourPrice}}</td>
+        <td>{{book.active}}</td>
+        <td>
+          <input hidden="hidden" name="id" />
+          <button class='btn btn-danger btn-xs delete-book' type="submit" value="delete"><span
+            class="fa fa-times"></span> delete
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <button class="btn btn-danger" id="deleteSelected">Delete Selected</button>
+</div>

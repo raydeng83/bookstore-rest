@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by z00382545 on 1/16/17.
@@ -63,5 +64,9 @@ public class BookResource {
     }
 
 
+    @RequestMapping("/bookList")
+    public List<Book> getBookList(){
+        return bookService.findAll();
+    }
 
 }
