@@ -34,7 +34,7 @@ export class LoginService {
     let tokenHeader = new Headers ({
       'x-auth-token' : localStorage.getItem("xAuthToken")
     });
-    return this.http.get(url, {headers : tokenHeader});
+    return this.http.post(url,'', {headers : tokenHeader});
   }
 
 }

@@ -65,7 +65,7 @@ public class LoginResource {
         return "login success";
     }
 
-    @RequestMapping(value = "/user/logout", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/logout", method = RequestMethod.POST)
     public String logout() {
         SecurityContextHolder.clearContext();
 
