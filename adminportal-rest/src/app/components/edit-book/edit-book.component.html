@@ -1,0 +1,179 @@
+<div class="container">
+  <div class="row" [hidden]="bookUpdated">
+    <div class="col s12">
+      <h3 style="margin-top: 30px;" class="center-align">Update Book Information <span style="font-size: small"> * is a required field</span>
+      </h3>
+      <form class="col s12" (ngSubmit)="onSubmit()">
+        <input hidden name="id" [(ngModel)]="book.id" />
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="title" type="text" class="validate" required [(ngModel)]="book.title" name="title">
+            <label for="title">* Title</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="author" type="text" class="validate" required [(ngModel)]="book.author" name="author">
+            <label for="author">* Author</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="publisher" type="text" class="validate" [(ngModel)]="book.publisher" name="publisher">
+            <label for="publisher">Publisher</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+          <span class="grey-text">Publication Date
+          <input id="publicationDate" type="date" class="datepicker" [(ngModel)]="book.publicationDate"
+                 name="publicationDate"></span>
+          </div>
+
+
+        </div>
+
+        <div class="row">
+
+        </div>
+
+        <div class="row">
+          <div class="input-field col s6">
+            <span class="grey-text">* Category</span>
+            <select class="browser-default" id="category" name="category" [(ngModel)]="book.category">
+              <option value="Management">Management</option>
+              <option value="Fiction">Fiction</option>
+              <option value="Engineering">Engineering</option>
+              <option value="Programming">Programming</option>
+              <option value="Arts &amp; Literature">Arts &amp; Literature</option>
+            </select>
+          </div>
+
+          <div class="input-field col s6">
+            <span class="grey-text">Format</span>
+            <select class="browser-default" id="format" name="format" [(ngModel)]="book.format">
+              <option value="paperback">Paperback</option>
+              <option value="hardcover">Hardcover</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="pageNumber" type="number" name="numberOfPages" class="validate" step="0.01"
+                   [(ngModel)]="book.numberOfPages">
+            <label for="pageNumber">Number of Pages</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="isbn" type="text" class="validate" [(ngModel)]="book.isbn" name="isbn">
+            <label for="isbn">* ISBN</label>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="input-field col s4">
+            $
+            <div class="input-field inline">
+              <input id="listPrice" type="number" name="listPrice" class="validate" step="0.01"
+                     [(ngModel)]="book.listPrice">
+              <label for="listPrice">List Price</label>
+            </div>
+          </div>
+          <div class="input-field col s4">
+            $
+            <div class="input-field inline">
+              <input id="ourPrice" type="number" name="ourPrice" class="validate" step="0.01"
+                     [(ngModel)]="book.ourPrice">
+              <label for="ourPrice">Our Price</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s6">
+            <div class="input-field inline">
+              <input id="shippingWeight" type="number" name="shippingWeight" class="validate" step="0.01"
+                     [(ngModel)]="book.shippingWeight">
+              <label for="shippingWeight">Shipping Weight</label>
+            </div>
+            ounces
+          </div>
+
+          <div class="input-field col s6">
+            <span class="grey-text">Language</span>
+            <select class="browser-default" id="language" name="language" [(ngModel)]="book.language">
+              <option value="english">English</option>
+              <option value="spanish">Spanish</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="inStockNumber" type="number" name="inStockNumber" class="validate" step="0.01"
+                   [(ngModel)]="book.inStockNumber">
+            <label for="inStockNumber">Number In Stock</label>
+          </div>
+
+          <div class="input-field col s6">
+            <!-- Switch -->
+            <div class="switch" id="active">
+              <label>
+                Inactive
+                <input type="checkbox" [(ngModel)]="book.active" name="active">
+                <span class="lever"></span>
+                Active
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <br/>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea id="description" class="materialize-textarea" [(ngModel)]="book.description"
+                          name="description"></textarea>
+                <label for="description">Description</label>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="row">
+          <div class="col s10">
+            <div class="file-field input-field">
+              <div class="btn">
+                <span>Image</span>
+                <input type="file" id="bookImage" name="bookImage"
+                       (change)="uploadImageService.fileChangeEvent($event)"/>
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="col s2">
+            <br/>
+            <!--<button type="button" (click)="uploadImageService.upload()" class="waves-effect waves-teal btn-flat">Upload</button>-->
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s12">
+            <button type="submit" class="waves-effect waves-light btn blue darken-2 text-white">Update Book</button>
+            <a routerLink="/bookList" routerLinkActive="active" class="waves-effect waves-light btn red darken-2 text-white">Cancel</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row" [hidden]="!bookUpdated">
+    <div class="col s12">
+      <h3>Book updated successfully!</h3>
+    </div>
+  </div>
+</div>

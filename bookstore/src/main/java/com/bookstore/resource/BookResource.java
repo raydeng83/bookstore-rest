@@ -63,6 +63,11 @@ public class BookResource {
         return bookService.save(book);
     }
 
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public Book updateBookPost(@RequestBody Book book) {
+        return bookService.save(book);
+    }
+
 
     @RequestMapping("/bookList")
     public List<Book> getBookList(){
