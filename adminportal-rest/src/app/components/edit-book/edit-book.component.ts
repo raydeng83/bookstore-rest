@@ -37,7 +37,7 @@ export class EditBookComponent implements OnInit {
     this.editBookService.sendBook(this.book)
       .subscribe(
         data => {
-          this.uploadImageService.upload(JSON.parse(JSON.parse(JSON.stringify(data))._body).id);
+          // this.uploadImageService.upload(JSON.parse(JSON.parse(JSON.stringify(data))._body).id);
           this.bookUpdated = true;
         },
         error => console.log(error)

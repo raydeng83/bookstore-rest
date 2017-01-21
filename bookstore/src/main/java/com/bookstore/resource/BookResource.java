@@ -15,6 +15,8 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Iterator;
 import java.util.List;
 
@@ -42,6 +44,36 @@ public class BookResource {
             MultipartFile multipartFile = multipartRequest.getFile(it.next());
             String fileName = id+".png";
             imageName = fileName;
+
+            byte[] bytes = multipartFile.getBytes();
+            BufferedOutputStream stream =
+                    new BufferedOutputStream(new FileOutputStream(new File("src/main/resources/static/image/book/" + fileName)));
+            stream.write(bytes);
+            stream.close();
+
+            return new ResponseEntity("Upload Success!", HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity("Upload Failed!", HttpStatus.BAD_REQUEST);
+        }
+
+    }
+
+    @RequestMapping(value = "/update/image", method = RequestMethod.POST)
+    public ResponseEntity updateImagePost(
+            @RequestParam("id") Long id,
+            HttpServletResponse response, HttpServletRequest request
+    ) {
+        try {
+            Book book = bookService.findOne(id);
+            MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+            Iterator<String> it = multipartRequest.getFileNames();
+            MultipartFile multipartFile = multipartRequest.getFile(it.next());
+            String fileName = id+".png";
+            imageName = fileName;
+
+            Files.delete(Paths.get("src/main/resources/static/image/book/"+fileName));
 
             byte[] bytes = multipartFile.getBytes();
             BufferedOutputStream stream =
