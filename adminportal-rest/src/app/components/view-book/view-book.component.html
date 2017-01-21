@@ -1,22 +1,25 @@
 <div class="container">
-  <div>
-    <ol class="breadcrumb">
-      <li><a><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Go back</a></li>
-      <li><a>Edit</a></li>
-    </ol>
+
+  <div class="row" style="margin-top: 20px;">
+    <div class="col s12">
+      <a routerLink="/bookList" routerLinkActive="active"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Go back</a>
+      <span> / </span>
+      <a>Edit</a>
+    </div>
   </div>
+
   <div class="row">
-    <div class="col-xs-3">
+    <div class="col s3">
       <div class="panel panel-default">
         <div class="panel-body">
-          <img src="#" class="img-responsive"/>
+          <img [src]="'http://localhost:8181/image/book/'+book.id+'.png'" class="responsive-img"/>
         </div>
       </div>
     </div>
-    <div class="col-xs-9">
+    <div class="col s8 offset-s1">
       <h3>{{book.title}}</h3>
       <div class="row">
-        <div class="col-xs-6">
+        <div class="col s6">
           <p><strong>Author: </strong>{{book.author}}</p>
           <p><strong>Publisher: </strong>{{book.publisher}}</p>
           <p><strong>Publication Date: </strong>{{book.publicationDate}}</p>
@@ -24,7 +27,7 @@
           <p><strong>Category: </strong>{{book.category}}</p>
           <p><strong>Pages: </strong>{{book.numberOfPages}}</p>
         </div>
-        <div class="col-xs-6">
+        <div class="col s6">
           <p><strong>Format: </strong>{{book.format}}</p>
           <p><strong>ISBN: </strong>{{book.isbn}}</p>
           <p><strong>Shipping Weight: </strong>{{book.shippingWeight}}</p>

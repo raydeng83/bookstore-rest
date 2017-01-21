@@ -1,6 +1,6 @@
 <div class="container">
   <div class="table-responsive" style="margin-top: 30px;">
-    <table id="bookListTable" class="table bordered highlight striped">
+    <table id="bookListTable" class="table bordered highlight">
       <thead>
       <tr>
         <th><input type="checkbox"/></th>
@@ -27,7 +27,7 @@
         <td>{{book.active}}</td>
         <td>
           <input hidden="hidden" name="id" />
-          <button class='btn btn-danger btn-xs delete-book' type="submit" value="delete"><span
+          <button class='btn delete-book red darken-2' type="submit" value="delete"><span
             class="fa fa-times"></span> delete
           </button>
         </td>
@@ -35,5 +35,5 @@
       </tbody>
     </table>
   </div>
-  <button class="btn btn-danger" id="deleteSelected">Delete Selected</button>
+  <button class="btn red darken-2" id="deleteSelected">Delete Selected</button>
 </div>
