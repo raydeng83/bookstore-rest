@@ -17,6 +17,17 @@ export class UploadImageService {
     });
   }
 
+  modify(bookId: number) {
+    console.log(this.filesToUpload);
+    if (this.filesToUpload!=null) {
+      this.makeFileRequest("http://localhost:8181/book/update/image?id=" + bookId, [], this.filesToUpload).then((result) => {
+        console.log(result);
+      }, (error) => {
+        console.error(error);
+      });
+    }
+  }
+
   fileChangeEvent(fileInput: any){
     this.filesToUpload = <Array<File>> fileInput.target.files;
   }
