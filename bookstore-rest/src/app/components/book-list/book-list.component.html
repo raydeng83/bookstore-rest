@@ -1,41 +1,27 @@
 <div class="container" style="margin-top: 20px;">
 	<div class="row">
 	<div class="col s10 offset-s2">
-			<table id="bookListTable" class="table bordered highlight">
-				<thead>
-					<tr>
-						<th><input type="checkbox"/></th>
-						<th>Title</th>
-						<th>Author</th>
-						<th>Category</th>
-						<th>List Price</th>
-						<th>Our Price</th>
-						<th>Active?</th>
-						<th>Operation</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr *ngFor="let book of bookList">
-						<td>
-							<input hidden="hidden" name="id"  />
-							<input class="checkboxBook" type="checkbox"/>
-						</td>
-						<td><a (click)="onSelect(book)" style="cursor: pointer">{{book.title}}</a></td>
-						<td>{{book.author}}</td>
-						<td>{{book.category}}</td>
-						<td>{{book.listPrice}}</td>
-						<td>{{book.ourPrice}}</td>
-						<td>{{book.active}}</td>
-						<td>
-							<input hidden="hidden" name="id" />
-							<button class='btn delete-book red darken-2' type="submit" value="delete"><span
-								class="fa fa-times"></span> delete
-							</button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<button class="btn red darken-2" id="deleteSelected">Delete Selected</button>
+			<div>
+      <h3>Inline Editing</h3>
+      <ngx-datatable
+        class="material"
+        [rows]="rows"
+        [loadingIndicator]="loadingIndicator"
+        [columns]="columns"
+        [columnMode]="'force'"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        [rowHeight]="'auto'">
+        <ngx-datatable-row-detail [rowHeight]="100" #myDetailRow>
+          <template let-row="row" ngx-datatable-row-detail-template>
+            <div style="padding-left:35px;">
+              <div><strong>Address</strong></div>
+              <div>test1, test2</div>
+            </div>
+          </template>
+        </ngx-datatable-row-detail>
+      </ngx-datatable>
+    </div>
 		</div>
 	</div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import {Book} from "../../models/book";
 import {GetBookListService} from "../../services/get-book-list.service";
 import {Router} from "@angular/router";
@@ -9,6 +9,18 @@ import {Router} from "@angular/router";
   styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent implements OnInit {
+  template: TemplateRef<any>;
+  @ViewChild('myTable') table: any;
+
+  rows = [
+    { book: '<h1>Austin</h1>'},
+    { book: 'Austin'},
+    { book: 'Austin'}
+  ];
+  columns = [
+    { prop: 'book' },
+    
+  ];
 
   private selectedBook : Book;
   private bookList: Book[];

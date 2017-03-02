@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/materialize-css/dist/css/materialize.css";
+@import '../node_modules/@swimlane/ngx-datatable/release/index.css';
+@import '../node_modules/@swimlane/ngx-datatable/release/themes/material.css';
+@import '../node_modules/@swimlane/ngx-datatable/release/assets/icons.css';
 
 .container {
   width: 90%;
