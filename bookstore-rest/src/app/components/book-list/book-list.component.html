@@ -2,49 +2,45 @@
 	<div class="row">
 		<div class="col s10 offset-s2">
 			<table class="table table-striped" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable"
-                   [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
-                <thead>
-                <tr>
-                    <th style="width: 10%"></th>
-                    <th style="width: 20%">
-                        <mfDefaultSorter by="name">Name</mfDefaultSorter>
-                    </th>
-                    <th style="width: 40%">
-                        <mfDefaultSorter by="email">Email</mfDefaultSorter>
-                    </th>
-                    <th style="width: 10%">
-                        <mfDefaultSorter by="age">Age</mfDefaultSorter>
-                    </th>
-                    <th style="width: 20%">
-                        <mfDefaultSorter [by]="sortByWordLength">City</mfDefaultSorter>
-                    </th>
-                </tr>
-                <tr>
-                    <th colspan="5">
-                        Filter by name:
-                        <input class="form-control" [(ngModel)]="filterQuery"/>
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let item of mf.data">
-                    <td>
-                        <button (click)="remove(item)" class="btn btn-danger">x</button>
-                    </td>
-                    <td>{{item.name}}</td>
-                    <td>{{item.email}}</td>
-                    <td class="text-right">{{item.age}}</td>
-                    <td>{{item.city | uppercase}}</td>
-                </tr>
-                </tbody>
-                <tfoot>
-                <tr>
-                    <td colspan="5">
-                        <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
-                    </td>
-                </tr>
-                </tfoot>
-            </table>
-		</div>
+			[mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+			<thead>
+				<tr>
+					<th colspan="5">
+						Filter by name:
+						<input class="form-control" [(ngModel)]="filterQuery"/>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let book of bookList">
+					<div class="row box" >
+						<div class="col-md-3"><a th:href="@{/bookDetail?id=}+${book.id}">
+                                        <img class="img-responsive shelf-book"
+                                             th:src="#{adminPath}+@{/image/book/}+${book.id}+'.png'"/>
+                                    </a></div>
+						<div class="col-md-9" >
+							<h4 style="margin-top: 20px;">{{book.title}}</h4>
+							<span>{{book.publicationDate}}</span>
+                                    <p>{{book.author}}</p>
+                                    <a href="#"><span>{{book.format | uppercase}}</span></a>
+                                    <span>{{book.numberOfPages}}</span><span> pages</span><br/>
+                                    <a th:href="@{/bookDetail?id=}+${book.id}"><span
+                                            style="font-size: x-large; color: #db3208">$<span>{{book.ourPrice | number : '1.2-2'}}</span></span></a>
+                                    <span style=" text-decoration: line-through;">$<span
+                                            >{{book.listPrice | number : '1.2-2'}}</span></span>
+                                    <p th:utext="${#strings.abbreviate(book.description,500)}">{{book.description | slice:0:500}}</p>
+						</div>
+					</div>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="5">
+						<mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
 	</div>
+</div>
 </div>
