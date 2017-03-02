@@ -15,6 +15,8 @@ export class BookDetailComponent implements OnInit {
   private bookId: number;
   private book: Book = new Book();
   private serverPath = AppConst.serverPath;
+  private numberList: number[]=[1,2,3,4,5,6,7,8,9];
+  private qty:number;
 
   private addBookSuccess:boolean = false;
   private notEnoughStock:boolean = false;

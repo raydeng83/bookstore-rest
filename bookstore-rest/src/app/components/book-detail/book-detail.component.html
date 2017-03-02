@@ -31,6 +31,7 @@
                         <p><strong><span>{{book.format}}</span>:</strong> <span>{{book.numberOfPages}}</span> pages</p>
                         <p><strong>ISBN:</strong> <span>{{book.isbn}}</span></p>
                         <p><strong>Shipping Weight:</strong> <span>{{book.shippingWeight}}</span> ounces</p>
+
                     </div>
                     <div class="col-xs-7">
                         <div class="panel panel-default" style="border-width: 5px; margin-top: 20px;">
@@ -44,12 +45,9 @@
                                         <p>You Save: $<span
                                                 >{{book.listPrice-book.ourPrice | number : '1.2-2'}}</span>
                                         </p>
-                                        <span>Qty:</span>
-                                        <select name="qty">
-                                            <option th:each="qty : ${qtyList}"
-                                                    th:value="${qty}"
-                                                    th:text="${qty}">...
-                                            </option>
+                                        <span>Qty: </span>
+                                        <select [(ngModel)]="qty" class="browser-default" style="width: 50px;display: inline;">
+                                            <option *ngFor="let x of numberList" [ngValue]="x" >{{x}}</option>
                                         </select>
                                     </div>
                                     <div class="col-xs-6">
