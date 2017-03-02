@@ -14,7 +14,8 @@ import { BookshelfCarouselComponent } from './components/bookshelf-carousel/book
 import { BookListComponent } from './components/book-list/book-list.component';
 
 import {GetBookListService} from './services/get-book-list.service';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import {DataTableModule} from "angular2-datatable";
+import { DataFilterPipe }   from './components/book-list/data-filter.pipe';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     FooterComponent,
     BookshelfCarouselComponent,
     BookListComponent,
+    DataFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     HttpModule,
     routing,
     NgbModule.forRoot(),
-    NgxDatatableModule
+    DataTableModule
   ],
   providers: [
     GetBookListService

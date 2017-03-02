@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import {Book} from "../../models/book";
 import {GetBookListService} from "../../services/get-book-list.service";
 import {Router} from "@angular/router";
+import {Http} from "@angular/http";
 
 @Component({
   selector: 'app-book-list',
@@ -9,23 +10,17 @@ import {Router} from "@angular/router";
   styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent implements OnInit {
-  template: TemplateRef<any>;
-  @ViewChild('myTable') table: any;
 
-  rows = [
-    { book: '<h1>Austin</h1>'},
-    { book: 'Austin'},
-    { book: 'Austin'}
-  ];
-  columns = [
-    { prop: 'book' },
-    
-  ];
+  public data;
+    public filterQuery = "";
+    public rowsOnPage = 10;
+    public sortBy = "email";
+    public sortOrder = "asc";
 
   private selectedBook : Book;
   private bookList: Book[];
 
-  constructor(private getBookListService: GetBookListService, private router: Router) {
+  constructor(private getBookListService: GetBookListService, private router: Router, private http: Http) {
     this.getBookListService.getBookList().subscribe(
       res => {
         console.log(res.json());
@@ -43,7 +38,12 @@ export class BookListComponent implements OnInit {
   }
 
   ngOnInit() {
-
+this.http.get("app/components/book-list/data.json")
+            .subscribe((data)=> {
+                setTimeout(()=> {
+                    this.data = data.json();
+                }, 1000);
+            });
   }
 
 }
