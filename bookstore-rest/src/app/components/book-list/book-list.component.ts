@@ -3,6 +3,7 @@ import {Book} from "../../models/book";
 import {GetBookListService} from "../../services/get-book-list.service";
 import {Router} from "@angular/router";
 import {Http} from "@angular/http";
+import {AppConst} from '../../constants/app-const';
 
 @Component({
   selector: 'app-book-list',
@@ -14,11 +15,10 @@ export class BookListComponent implements OnInit {
   public data;
     public filterQuery = "";
     public rowsOnPage = 10;
-    public sortBy = "email";
-    public sortOrder = "asc";
 
   private selectedBook : Book;
   private bookList: Book[];
+  private serverPath = AppConst.serverPath;
 
   constructor(private getBookListService: GetBookListService, private router: Router, private http: Http) {
     this.getBookListService.getBookList().subscribe(

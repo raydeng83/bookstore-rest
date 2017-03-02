@@ -14,9 +14,9 @@
 			<tbody>
 				<tr *ngFor="let book of bookList">
 					<div class="row box" >
-						<div class="col-md-3"><a th:href="@{/bookDetail?id=}+${book.id}">
-                                        <img class="img-responsive shelf-book"
-                                             th:src="#{adminPath}+@{/image/book/}+${book.id}+'.png'"/>
+						<div class="col-md-3"><a href="#">
+                                        <img class="responsive-img shelf-book"
+                                             src="{{serverPath}}/image/book/{{book.id}}.png"/>
                                     </a></div>
 						<div class="col-md-9" >
 							<h4 style="margin-top: 20px;">{{book.title}}</h4>
