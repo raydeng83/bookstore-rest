@@ -16,6 +16,7 @@ import { BookListComponent } from './components/book-list/book-list.component';
 import {GetBookListService} from './services/get-book-list.service';
 import {DataTableModule} from "angular2-datatable";
 import { DataFilterPipe }   from './components/book-list/data-filter.pipe';
+import { BookDetailComponent } from './components/book-detail/book-detail.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { DataFilterPipe }   from './components/book-list/data-filter.pipe';
     FooterComponent,
     BookshelfCarouselComponent,
     BookListComponent,
-    DataFilterPipe
+    DataFilterPipe,
+    BookDetailComponent
   ],
   imports: [
     BrowserModule,

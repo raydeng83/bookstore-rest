@@ -12,7 +12,6 @@ import {AppConst} from '../../constants/app-const';
 })
 export class BookListComponent implements OnInit {
 
-  public data;
     public filterQuery = "";
     public rowsOnPage = 10;
 
@@ -38,12 +37,7 @@ export class BookListComponent implements OnInit {
   }
 
   ngOnInit() {
-this.http.get("app/components/book-list/data.json")
-            .subscribe((data)=> {
-                setTimeout(()=> {
-                    this.data = data.json();
-                }, 1000);
-            });
+
   }
 
 }

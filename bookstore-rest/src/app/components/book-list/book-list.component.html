@@ -1,7 +1,19 @@
 <div class="container" style="margin-top: 20px;">
 	<div class="row">
-		<div class="col s10 offset-s2">
-			<table class="table table-striped" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable"
+                <div class="col-xs-8">
+                    <h2 class="section-headline"><span>All Books</span></h2>
+                </div>
+                <div class="col-xs-4">
+                    <a href="#"><img src="{{serverPath}}/image/logo.png" class="img-responsive"/></a>
+                </div>
+            </div>
+            <hr style="position: absolute; width:100%; height:6px; background-color: #333; z-index: -1; margin-top: -80px;"/>
+            <img class="img-responsive" src="{{serverPath}}/image/wood.png" style="margin-top: -75px;"/>
+
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-9">
+			<table class="table" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable"
 			[mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
 			<thead>
 				<tr>
@@ -13,9 +25,9 @@
 			</thead>
 			<tbody>
 				<tr *ngFor="let book of bookList">
-					<div class="row box" >
+					<div class="row" >
 						<div class="col-md-3"><a href="#">
-                                        <img class="responsive-img shelf-book"
+                                        <img class="img-responsive"
                                              src="{{serverPath}}/image/book/{{book.id}}.png"/>
                                     </a></div>
 						<div class="col-md-9" >
@@ -28,7 +40,7 @@
                                             style="font-size: x-large; color: #db3208">$<span>{{book.ourPrice | number : '1.2-2'}}</span></span></a>
                                     <span style=" text-decoration: line-through;">$<span
                                             >{{book.listPrice | number : '1.2-2'}}</span></span>
-                                    <p th:utext="${#strings.abbreviate(book.description,500)}">{{book.description | slice:0:500}}</p>
+                                    <p>{{book.description | slice:0:500}}</p>
 						</div>
 					</div>
 				</tr>
