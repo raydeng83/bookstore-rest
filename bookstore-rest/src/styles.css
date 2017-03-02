@@ -22,3 +22,8 @@
 .box {
   border: 1px solid red;
 }
+
+.li {
+  display:inline;
+  white-space: nowrap;
+}

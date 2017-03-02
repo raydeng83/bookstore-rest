@@ -13,6 +13,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { BookshelfCarouselComponent } from './components/bookshelf-carousel/bookshelf-carousel.component';
 import { BookListComponent } from './components/book-list/book-list.component';
 
+import {GetBookListService} from './services/get-book-list.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,9 @@ import { BookListComponent } from './components/book-list/book-list.component';
     routing,
     NgbModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    GetBookListService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
