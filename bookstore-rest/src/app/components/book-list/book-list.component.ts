@@ -33,7 +33,7 @@ export class BookListComponent implements OnInit {
 
   onSelect(book:Book) {
     this.selectedBook = book;
-    this.router.navigate(['/viewBook', this.selectedBook.id]);
+    this.router.navigate(['/bookDetail', this.selectedBook.id]);
   }
 
   ngOnInit() {

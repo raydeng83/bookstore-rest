@@ -31,7 +31,7 @@
                                              src="{{serverPath}}/image/book/{{book.id}}.png"/>
                                     </a></div>
 						<div class="col-md-9" >
-							<h4 style="margin-top: 20px;">{{book.title}}</h4>
+							<h4 (click)="onSelect(book)" style="margin-top: 20px;cursor: pointer;">{{book.title}}</h4>
 							<span>{{book.publicationDate}}</span>
                                     <p>{{book.author}}</p>
                                     <a href="#"><span>{{book.format | uppercase}}</span></a>

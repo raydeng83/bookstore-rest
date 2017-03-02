@@ -4,6 +4,7 @@
 import {ModuleWithProviders}  from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {BookListComponent} from './components/book-list/book-list.component';
+import {BookDetailComponent} from './components/book-detail/book-detail.component';
 import {HomeComponent} from './components/home/home.component';
 
 const appRoutes: Routes = [
@@ -19,6 +20,10 @@ const appRoutes: Routes = [
   {
     path: 'bookList',
     component: BookListComponent
+  },
+  {
+    path: 'bookDetail/:id',
+    component: BookDetailComponent
   }
 ];
 

@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import {Book} from "../../models/book";
+import {GetBookService} from "../../services/get-book.service";
+import {Params, ActivatedRoute,Router} from "@angular/router";
+import {Http} from "@angular/http";
+import {AppConst} from '../../constants/app-const';
 
 @Component({
   selector: 'app-book-detail',
@@ -7,7 +12,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookDetailComponent implements OnInit {
 
-  constructor() { }
+  private bookId: number;
+  private book: Book = new Book();
+  private serverPath = AppConst.serverPath;
+
+  private addBookSuccess:boolean = false;
+  private notEnoughStock:boolean = false;
+
+  constructor(private getBookService: GetBookService, private route: ActivatedRoute, private router:Router) {
+    this.route.params.forEach((params: Params) => {
+      this.bookId = Number.parseInt(params['id']);
+    });
+
+    this.getBookService.getBook(this.bookId).subscribe(
+      res => {
+        this.book=res.json();
+      },
+      error => console.log(error)
+    );
+  }
 
   ngOnInit() {
   }
