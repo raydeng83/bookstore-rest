@@ -6,6 +6,8 @@ import {Routes, RouterModule} from '@angular/router';
 import {BookListComponent} from './components/book-list/book-list.component';
 import {BookDetailComponent} from './components/book-detail/book-detail.component';
 import {HomeComponent} from './components/home/home.component';
+import {NewAccountComponent} from './components/new-account/new-account.component';
+import {LogInComponent} from './components/log-in/log-in.component';
 
 const appRoutes: Routes = [
   {
@@ -24,6 +26,14 @@ const appRoutes: Routes = [
   {
     path: 'bookDetail/:id',
     component: BookDetailComponent
+  },
+  {
+    path: 'newAccount',
+    component: NewAccountComponent
+  },
+  {
+    path: 'logIn',
+    component: LogInComponent
   }
 ];
 

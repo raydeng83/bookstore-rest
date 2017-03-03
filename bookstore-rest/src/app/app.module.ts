@@ -18,6 +18,8 @@ import {GetBookService} from './services/get-book.service';
 import {DataTableModule} from "angular2-datatable";
 import { DataFilterPipe }   from './components/book-list/data-filter.pipe';
 import { BookDetailComponent } from './components/book-detail/book-detail.component';
+import { NewAccountComponent } from './components/new-account/new-account.component';
+import { LogInComponent } from './components/log-in/log-in.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { BookDetailComponent } from './components/book-detail/book-detail.compon
     BookshelfCarouselComponent,
     BookListComponent,
     DataFilterPipe,
-    BookDetailComponent
+    BookDetailComponent,
+    NewAccountComponent,
+    LogInComponent
   ],
   imports: [
     BrowserModule,
