@@ -4,13 +4,19 @@
   <li class="divider"></li>
   <li><a href="#!">three</a></li>
 </ul>
+<ul id="dropdown2" class="dropdown-content">
+  <li><a routerLink="/newAccount" routerLinkActive="active">New Account</a></li>
+  <li><a routerLink="/logIn" routerLinkActive="active">Log In</a></li>
+  <li><a routerLink="/forgetPassword" routerLinkActive="active">Forget Password</a></li>
+</ul>
+
 <nav>
   <div class="nav-wrapper">
     <a href="#!" class="brand-logo" style="margin-left: 50px;">LE'S BOOKSTORE</a>
     <ul class="right hide-on-med-and-down">
-      <li><a class="dropdown-button" href="#!" data-activates="dropdown1">BOOKS<i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
       <li><a routerLink="/shoppingCart" routerLinkActive="active">SHOPPING CART</a></li>
-      <li><a routerLink="/myAccount" routerLinkActive="active">MY ACCOUNT</a></li>
+      <li><a class="dropdown-button" href="#!" data-activates="dropdown1">BOOKS<i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
+      <li><a class="dropdown-button" href="#!" data-activates="dropdown2">MY ACCOUNT<i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
       <!-- Dropdown Trigger -->
     </ul>
   </div>

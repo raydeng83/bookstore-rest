@@ -20,6 +20,7 @@ import { DataFilterPipe }   from './components/book-list/data-filter.pipe';
 import { BookDetailComponent } from './components/book-detail/book-detail.component';
 import { NewAccountComponent } from './components/new-account/new-account.component';
 import { LogInComponent } from './components/log-in/log-in.component';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { LogInComponent } from './components/log-in/log-in.component';
     DataFilterPipe,
     BookDetailComponent,
     NewAccountComponent,
-    LogInComponent
+    LogInComponent,
+    ForgetPasswordComponent
   ],
   imports: [
     BrowserModule,

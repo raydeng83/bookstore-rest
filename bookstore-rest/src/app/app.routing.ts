@@ -8,6 +8,7 @@ import {BookDetailComponent} from './components/book-detail/book-detail.componen
 import {HomeComponent} from './components/home/home.component';
 import {NewAccountComponent} from './components/new-account/new-account.component';
 import {LogInComponent} from './components/log-in/log-in.component';
+import {ForgetPasswordComponent} from './components/forget-password/forget-password.component';
 
 const appRoutes: Routes = [
   {
@@ -34,6 +35,10 @@ const appRoutes: Routes = [
   {
     path: 'logIn',
     component: LogInComponent
+  },
+  {
+    path: 'forgetPassword',
+    component: ForgetPasswordComponent
   }
 ];
 
