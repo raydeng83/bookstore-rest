@@ -34,12 +34,12 @@ public class MailConstructor {
 
     public SimpleMailMessage constructResetTokenEmail(
             String contextPath, Locale locale, String token, User user, String password) {
-        String url = contextPath + "/user/addNewUser?token=" + token;
-        String message = "\nPlease click on this link to verify your email and edit your personal info. Your password is:\n " + password;
+//        String url = contextPath + "/user/addNewUser?token=" + token;
+        String message = "\nPlease use the following credentials to log in and edit your personal info including your own password. \nUsername: "+user.getUsername()+"\nPassword:" + password;
         SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(user.getEmail());
         email.setSubject("Le's Bookstore - New User");
-        email.setText(url + message);
+        email.setText(message);
         email.setFrom(env.getProperty("support.email"));
         return email;
     }
