@@ -15,6 +15,8 @@ import { BookListComponent } from './components/book-list/book-list.component';
 
 import {GetBookListService} from './services/get-book-list.service';
 import {GetBookService} from './services/get-book.service';
+import {UserService} from './services/user.service';
+
 import {DataTableModule} from "angular2-datatable";
 import { DataFilterPipe }   from './components/book-list/data-filter.pipe';
 import { BookDetailComponent } from './components/book-detail/book-detail.component';
@@ -48,7 +50,8 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
   ],
   providers: [
     GetBookListService,
-    GetBookService
+    GetBookService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
