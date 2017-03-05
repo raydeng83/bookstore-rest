@@ -24,6 +24,7 @@ import { BookDetailComponent } from './components/book-detail/book-detail.compon
 import { NewAccountComponent } from './components/new-account/new-account.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { UserInfoComponent } from './components/user-info/user-info.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
     BookDetailComponent,
     NewAccountComponent,
     LogInComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,

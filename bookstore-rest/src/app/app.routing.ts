@@ -9,6 +9,8 @@ import {HomeComponent} from './components/home/home.component';
 import {NewAccountComponent} from './components/new-account/new-account.component';
 import {LogInComponent} from './components/log-in/log-in.component';
 import {ForgetPasswordComponent} from './components/forget-password/forget-password.component';
+import {UserInfoComponent} from './components/user-info/user-info.component';
+
 
 const appRoutes: Routes = [
   {
@@ -39,6 +41,10 @@ const appRoutes: Routes = [
   {
     path: 'forgetPassword',
     component: ForgetPasswordComponent
+  },
+  {
+    path: 'userInfo',
+    component: UserInfoComponent
   }
 ];
 

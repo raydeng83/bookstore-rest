@@ -1,0 +1,87 @@
+<div class="container" style="margin-top: 20px;">
+<div class="row">
+   <div class="col-xs-8">
+      <h2 class="section-headline"><span>Log In</span></h2>
+   </div>
+   <div class="col-xs-4">
+      <a href="#"><img src="{{serverPath}}/image/logo.png" class="img-responsive"/></a>
+   </div>
+</div>
+<hr style="position: absolute; width:100%; height:6px; background-color: #333; z-index: -1; margin-top: -80px;"/>
+<img class="img-responsive" src="{{serverPath}}/image/wood.png" style="margin-top: -75px;"/>
+<div class="row">
+   <div class="col-xs-3"></div>
+   <div class="col-xs-9">
+      <div class="panel-group">
+         <div class="panel panel-default panel-faq" style="border: none;">
+            <div class="panel-body" style="background-color: #ededed; margin-top: 20px;">
+               <div class="alert alert-danger" th:if="${incorrectPassword}">
+                  <strong>Incorrect Password!</strong> Please enter the correct password for the
+                  current user.
+               </div>
+               <div class="alert alert-success" th:if="${updateSuccess}">
+                  <strong>Update Success!</strong>
+               </div>
+               <form th:action="@{/updateUserInfo}" method="post">
+                  <input type="hidden" name="id" th:value="${user.id}"/>
+                  <div class="bg-info" th:if="${updateUserInfo}">User info updated.</div>
+                  <div class="form-group">
+                     <div class="row">
+                        <div class="col-xs-6">
+                           <label for="firstName">First Name</label>
+                           <input type="text" class="form-control" id="firstName" name="firstName"
+                              th:value="${user.firstName}"/>
+                        </div>
+                        <div class="col-xs-6">
+                           <label for="lastName">Last Name</label>
+                           <input type="text" class="form-control" id="lastName" name="lastName"
+                              th:value="${user.lastName}"/>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label for="username">Username *</label>&nbsp;<span th:if="${usernameExists}"
+                        style="color:red;">Username already exists. Choose a different one.</span>
+                     <input required="required" type="text" class="form-control" id="username"
+                        name="username" th:value="${user.username}"/>
+                  </div>
+                  <div class="form-group">
+                     <label for="currentPassword">Current password</label>
+                     <input type="password" class="form-control" id="currentPassword" name="password"
+                        th:value="${currentPassword}"/>
+                     <p style="color: #828282;"> Enter your current password to change the E-mail
+                        address or Password.
+                     </p>
+                  </div>
+                  <div class="form-group">
+                     <label for="email">E-mail Address *</label>&nbsp;<span th:if="${emailExists}"
+                        style="color:red;">Email already exists. Choose a different one.</span>
+                     <input required="required" type="text" class="form-control" id="email"
+                        name="email" th:value="${user.email}"/>
+                     <p style="color: #828282;"> A valid e-mail address. All e-mails from the system
+                        will be sent to this address. The e-mail address is not made public and will
+                        only be used if you wish to receive a new password or wish to receive
+                        certain news or notifications by e-mail.
+                     </p>
+                  </div>
+                  <div class="form-group">
+                     <label for="txtNewPassword">Password</label>&nbsp;<span id="checkPasswordMatch"
+                        style="color:red;"></span>
+                     <input type="password" class="form-control" id="txtNewPassword"
+                        name="newPassword"/>
+                  </div>
+                  <div class="form-group">
+                     <label for="txtConfirmPassword">Confirm Password</label>
+                     <input type="password" class="form-control" id="txtConfirmPassword"/>
+                     <p style="color: #828282;"> To change the current user password, enter the new
+                        password in both fields.
+                     </p>
+                  </div>
+                  <button type="submit" class="btn btn-primary" id="updateUserInfoButton">Save
+                  </button>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
